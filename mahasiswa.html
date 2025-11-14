@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulir Data Mahasiswa</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #a2c2ee, #c391c4);
+      margin: 0;
+      padding: 25px;
+    }
+
+    .container {
+      max-width: 500px;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin: auto;
+    }
+
+    .judul {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #3b486b;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 12px;
+      display: block;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #888;
+    }
+
+    .gender {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    button {
+      background: #6a5acd;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #5748c6;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 30px;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th {
+      background: #6a5acd;
+      color: white;
+      padding: 10px;
+    }
+
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      color: #333;
+      background: #fafafa;
+    }
+
+    .count-box {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      width: 300px;
+      margin-top: 20px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="judul">Formulir Data Mahasiswa</div>
+
+  <label>Nama:</label>
+  <input type="text" id="nama">
+
+  <label>NIM:</label>
+  <input type="text" id="nim">
+
+  <label>Tempat Lahir:</label>
+  <input type="text" id="tempat">
+
+  <label>Tanggal Lahir:</label>
+  <input type="date" id="tanggal">
+
+  <label>Nama Sekolah:</label>
+  <input type="text" id="sekolah">
+
+  <label>Jurusan:</label>
+  <input type="text" id="jurusan">
+
+  <div class="gender">Jenis Kelamin:</div>
+  <input type="radio" name="gender" value="Laki-laki"> Laki-laki
+  <input type="radio" name="gender" value="Perempuan"> Perempuan
+
+  <button onclick="tambahData()">Tambah Data</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>NIM</th>
+      <th>Tempat</th>
+      <th>Tanggal</th>
+      <th>Sekolah</th>
+      <th>Jurusan</th>
+      <th>JK</th>
+    </tr>
+  </thead>
+  <tbody id="tabelData"></tbody>
+</table>
+
+<div class="count-box">
+  Laki-laki: <span id="jumlahL">0</span> &nbsp; | &nbsp;
+  Perempuan: <span id="jumlahP">0</span>
+</div>
+
+<script>
+  let no = 1, jumlahL = 0, jumlahP = 0;
+
+  function tambahData() {
+    let nama = document.getElementById("nama").value;
+    let nim = document.getElementById("nim").value;
+    let tempat = document.getElementById("tempat").value;
+    let tanggal = document.getElementById("tanggal").value;
+    let sekolah = document.getElementById("sekolah").value;
+    let jurusan = document.getElementById("jurusan").value;
+
+    let genderElm = document.getElementsByName("gender");
+    let gender = "";
+    for(let g of genderElm) if(g.checked) gender = g.value;
+
+    if(!nama || !nim || !tempat || !tanggal || !sekolah || !jurusan || !gender){
+      alert("Semua field wajib diisi!");
+      return;
+    }
+
+    document.getElementById("tabelData").innerHTML += `
+      <tr>
+        <td>${no++}</td>
+        <td>${nama}</td>
+        <td>${nim}</td>
+        <td>${tempat}</td>
+        <td>${tanggal}</td>
+        <td>${sekolah}</td>
+        <td>${jurusan}</td>
+        <td>${gender}</td>
+      </tr>`;
+
+    if(gender === "Laki-laki") jumlahL++; else jumlahP++;
+    document.getElementById("jumlahL").innerText = jumlahL;
+    document.getElementById("jumlahP").innerText = jumlahP;
+
+    document.getElementById("nama").value = "";
+    document.getElementById("nim").value = "";
+    document.getElementById("tempat").value = "";
+    document.getElementById("tanggal").value = "";
+    document.getElementById("sekolah").value = "";
+    document.getElementById("jurusan").value = "";
+    genderElm.forEach(g => g.checked = false);
+  }
+</script>
+
+</body>
+</html>
+

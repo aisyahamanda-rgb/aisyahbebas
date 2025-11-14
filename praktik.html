@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas Praktikum Bootstrap Grid</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #a2c2ee, #c391c4);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h2 {
+      font-weight: 600;
+      color: #0d6efd;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .col-custom {
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .col-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .nested-box {
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .nested-box:hover {
+      background-color: #e9ecef;
+      transform: scale(1.05);
+    }
+
+    .icon-style {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Tugas Praktikum: Sistem Grid Bootstrap 5</h2>
+
+    <div class="row text-white text-center g-3">
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#007bff;">
+        <i class="bi bi-house-door icon-style"></i>
+        <p>Kolom 1</p>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#6610f2;">
+        <i class="bi bi-person icon-style"></i>
+        <p>Kolom 2</p>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#6f42c1;">
+        <i class="bi bi-star icon-style"></i>
+        <p>Kolom 3</p>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#d63384;">
+        <i class="bi bi-heart icon-style"></i>
+        <p>Kolom 4</p>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#fd7e14;">
+        <i class="bi bi-gear icon-style"></i>
+        <p>Kolom 5</p>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 p-4 col-custom" style="background-color:#198754;">
+        <i class="bi bi-envelope icon-style"></i>
+        <p>Kolom 6</p>
+      </div>
+    </div>
+
+    <div class="row text-center mt-5 g-3">
+      <div class="col-md-6 p-4 bg-warning bg-gradient rounded-4 shadow-sm">
+        <h5 class="mb-3 fw-bold">Kolom dengan Nested Grid</h5>
+        <div class="row">
+          <div class="col-6 p-3 bg-light border nested-box">
+            <i class="bi bi-phone"></i><br>Nested 1
+          </div>
+          <div class="col-6 p-3 bg-light border nested-box">
+            <i class="bi bi-laptop"></i><br>Nested 2
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 p-4 bg-info text-white bg-gradient rounded-4 shadow-sm">
+        <h5 class="mb-3 fw-bold">Kolom Kedua</h5>
+        <i class="bi bi-globe icon-style"></i>
+        <p>Contoh tampilan responsif dan proporsional.</p>
+      </div>
+    </div>
+
+    <footer class="mt-30">
+      Tugas Praktikum Pak Ade
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
