@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen Ichiraku - Restoran Ramen Terkenal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan variabel */
+        :root {
+            --primary: #d35400;
+            --secondary: #e67e22;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Tentang Kami */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Menu */
+        .menu {
+            background-color: #f5f5f5;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+        }
+        
+        .menu-details {
+            padding: 20px;
+        }
+        
+        .menu-details h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Galeri */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Lokasi */
+        .location {
+            background-color: white;
+        }
+        
+        .location-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .location-info {
+            flex: 1;
+        }
+        
+        .location-map {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        /* Testimoni */
+        .testimonials {
+            background-color: #f5f5f5;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            margin-bottom: 0;
+        }
+        
+        /* Kontak */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .location-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .location-map {
+                margin-top: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Ramen<span>Ichiraku</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#location">Lokasi</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ramen Autentik Jepang di Indonesia</h1>
+                <p>Nikmati kelezatan ramen dengan resep rahasia yang telah diwariskan turun-temurun. Dibuat dengan bahan-bahan terbaik dan penuh cinta.</p>
+                <a href="#menu" class="btn">Lihat Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Warisan Rasa Sejak 1999</h3>
+                    <p>Ramen Ichiraku didirikan oleh Master Chef Hiroshi Tanaka yang telah menguasai seni membuat ramen selama lebih dari 30 tahun. Dengan dedikasi tinggi terhadap kualitas dan keaslian rasa, kami menghadirkan pengalaman kuliner Jepang yang tak terlupakan.</p>
+                    <p>Setiap mangkuk ramen kami dibuat dengan kaldu yang dimasak selama lebih dari 12 jam, menggunakan tulang babi pilihan dan bumbu rahasia yang membuat rasa kaldu menjadi kaya dan gurih.</p>
+                    <p>Kami percaya bahwa ramen bukan sekadar makanan, tetapi sebuah karya seni yang menghangatkan hati dan jiwa.</p>
+                    <a href="#contact" class="btn">Kunjungi Kami</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1557872943-6a5e1ad5d53a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Chef membuat ramen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Menu Andalan</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Tonkotsu Ramen">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Tonkotsu Ramen <span class="price">Rp 65.000</span></h3>
+                        <p>Ramen dengan kaldu tulang babi yang kental dan gurih, dilengkapi dengan chashu, telur rebus, dan sayuran segar.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1591814468924-caf88dd123e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Shoyu Ramen">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Shoyu Ramen <span class="price">Rp 55.000</span></h3>
+                        <p>Ramen dengan kaldu ayam yang dicampur kecap shoyu, memberikan rasa gurih yang seimbang dan nikmat.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1623341215095-6a4e0c686eb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Miso Ramen">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Miso Ramen <span class="price">Rp 60.000</span></h3>
+                        <p>Ramen dengan kaldu yang diperkaya pasta miso, memberikan rasa yang dalam dan kompleks dengan aroma khas.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Spicy Tan Tan Men">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Spicy Tan Tan Men <span class="price">Rp 70.000</span></h3>
+                        <p>Ramen pedas dengan pengaruh rasa Sichuan, dilengkapi daging cincang pedas dan kacang tanah.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Tsukemen">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Tsukemen <span class="price">Rp 75.000</span></h3>
+                        <p>Mie ramen yang disajikan terpisah dengan kuah kental yang pekat, untuk dicelup sebelum dimakan.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1892&q=80" alt="Vegetarian Ramen">
+                    </div>
+                    <div class="menu-details">
+                        <h3>Vegetarian Ramen <span class="price">Rp 50.000</span></h3>
+                        <p>Ramen dengan kaldu sayuran yang kaya rasa, dilengkapi dengan berbagai sayuran segar dan jamur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Galeri Kami</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Interior Restoran">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Proses Pembuatan">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bahan Berkualitas">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pelayanan Ramah">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokasi -->
+    <section class="location" id="location">
+        <div class="container">
+            <h2>Lokasi Kami</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Kunjungi Restoran Kami</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Ramen No. 123, Kelurahan Mie, Kecamatan Kuah, Jakarta Selatan 12345</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 10.00 - 22.00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@ramenichiraku.com</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com" class="btn" target="_blank">Dapatkan Petunjuk</a>
+                </div>
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613502864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sPT%20Kulkul%20Technology%20Citra!5e0!3m2!1sid!2sid!4v1609785424472!5m2!1sid!2sid" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>Apa Kata Pelanggan</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Ramen terbaik yang pernah saya coba! Kaldu Tonkotsu-nya sangat kental dan gurih, mie-nya kenyal sempurna. Pelayanannya juga sangat ramah dan cepat."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Wijaya">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Wijaya</h4>
+                            <p>Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Setiap kali saya rindu ramen Jepang yang autentik, saya selalu datang ke sini. Rasanya persis seperti yang saya makan saat berkunjung ke Fukuoka."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Budi Santoso">
+                        </div>
+                        <div class="author-info">
+                            <h4>Budi Santoso</h4>
+                            <p>Pelanggan Setia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Atmosfer restorannya sangat nyaman, cocok untuk makan sendiri atau bersama teman. Ramen Spicy Tan Tan Men favorit saya, pedasnya pas dan bikin nagih!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dewi Lestari">
+                        </div>
+                        <div class="author-info">
+                            <h4>Dewi Lestari</h4>
+                            <p>Mahasiswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <p>Untuk reservasi, pertanyaan, atau umpan balik, silakan hubungi kami melalui informasi di bawah ini:</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@ramenichiraku.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Ramen No. 123, Jakarta Selatan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ramen Ichiraku</h3>
+                    <p>Restoran ramen autentik Jepang dengan cita rasa yang telah diwariskan turun-temurun. Setiap mangkuk dibuat dengan penuh dedikasi dan cinta.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Menu Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Galeri</a></li>
+                        <li><a href="#location">Lokasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Ramen No. 123, Jakarta Selatan</li>
+                        <li><i class="fas fa-phone"></i> (021) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@ramenichiraku.com</li>
+                        <li><i class="fas fa-clock"></i> Senin - Minggu: 10.00 - 22.00 WIB</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ramen Ichiraku. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -7,12 +7,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    /* Warna Pink Soft Gradient */
     .bg-pink-gradient {
       background: linear-gradient(135deg, #fbd2e0, #f8a8c8) !important;
     }
 
-    /* Warna teks agar tetap terlihat */
     .navbar .nav-link,
     .navbar-brand {
       color: white !important;
@@ -22,14 +20,21 @@
     .navbar .nav-link:hover {
       color: #ffe6f0 !important;
     }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .bg-lightpink {
+      background: #fff5fa;
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg bg-pink-gradient">
+  <nav class="navbar navbar-expand-lg bg-pink-gradient fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">MyWebsite</a>
+      <a class="navbar-brand" href="#">Website Aisyah</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
@@ -38,26 +43,92 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Beranda</a>
+            <a class="nav-link active" href="#beranda">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tentang</a>
+            <a class="nav-link" href="#tentang">Tentang</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Layanan</a>
+            <a class="nav-link" href="#layanan">Layanan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Kontak</a>
+            <a class="nav-link" href="#kontak">Kontak</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container mt-5">
-    <h1>Contoh halaman dengan Navbar Bootstrap</h1>
-    <p>Ini adalah contoh halaman sederhana yang menggunakan navbar dari Bootstrap.</p>
-  </div>
+  <section id="beranda" class="bg-lightpink">
+    <div class="container text-center">
+      <h1 class="fw-bold">Selamat Datang di Website Aisyah</h1>
+      <p class="mt-3 fs-5">
+        Kami menyediakan layanan terbaik untuk membantu kamu membangun kehadiran digital yang modern.
+      </p>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-4">Tentang Website Aisyah</h2>
+      <p class="text-center fs-5">
+        Website Aisyah adalah platform yang berfokus pada pembuatan website modern dan simple.  
+        Kami percaya bahwa setiap orang berhak memiliki akses ke teknologi yang mudah digunakan.
+      </p>
+    </div>
+  </section>
+
+  <section id="layanan" class="bg-lightpink">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-5">Layanan Website Aisyah</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <h4 class="fw-semibold">Pembuatan Website</h4>
+          <p>Kami membantu membuat website modern yang responsive dan tampil menarik di semua perangkat anda.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h4 class="fw-semibold">Desain UI/UX</h4>
+          <p>Menciptakan tampilan desain yang nyaman digunakan, estetik, dan profesional.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h4 class="fw-semibold">Optimasi Konten</h4>
+          <p>Optimasi SEO agar website Anda lebih mudah ditemukan oleh pengguna di internet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-4">Kontak Website Aisyah</h2>
+      <p class="text-center mb-4">
+        Jika Anda membutuhkan bantuan atau ingin bekerja sama, hubungi kami melalui form berikut:
+      </p>
+
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Nama Lengkap</label>
+              <input type="text" class="form-control" placeholder="Masukkan nama Anda">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Masukkan email Anda">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Pesan</label>
+              <textarea class="form-control" rows="4" placeholder="Tulis pesan Anda"></textarea>
+            </div>
+
+            <button class="btn btn-primary w-100 bg-pink-gradient border-0">Kirim</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
