@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aisyah</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff9ecb, #ffb6c1);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            animation: fadeDown 1s ease;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        img {
+            width: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 10px auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .social {
+            text-align: center;
+        }
+
+        .social a {
+            text-decoration: none;
+            color: white;
+            background: #ff69b4;
+            padding: 10px 15px;
+            border-radius: 12px;
+            margin: 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #ff1493;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #ffb6c1;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>✨ Portofolio Saya ✨</h1>
+</header>
+
+<div class="container">
+
+    <div class="card" data-aos="zoom-in">
+        <img src="WhatsApp Image 2026-04-30 at 15.47.47.jpeg" alt="Foto Aisyah">
+        <h2>Aisyah Amanda Putri</h2>
+        <p>Kelas: X PPLG 2</p>
+    </div>
+
+    <div class="card" data-aos="fade-right">
+        <h3>Tentang Saya</h3>
+        <p>Halo! Saya Aisyah Amanda Putri, seorang siswa dari kelas X PPLG 2. Saya memiliki minat dalam dunia teknologi dan juga senang berolahraga.</p>
+    </div>
+
+    <div class="card" data-aos="fade-left">
+        <h3>Hobi</h3>
+        <p>Saya sangat suka bermain badminton karena membuat tubuh sehat dan menyenangkan.</p>
+    </div>
+
+    <div class="card" data-aos="flip-up">
+        <h3>Sosial Media</h3>
+        <div class="social">
+            <a href="https://instagram.com/lovely.syahh" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@another_syalala" target="_blank">TikTok</a>
+            <a href="https://wa.me/6283898810452" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Aisyah Amanda Putri</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+
+</body>
+</html>
